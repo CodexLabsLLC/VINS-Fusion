@@ -260,7 +260,9 @@ map<int, vector<pair<int, Eigen::Matrix<double, 7, 1>>>> FeatureTracker::trackIm
     map<int, vector<pair<int, Eigen::Matrix<double, 7, 1>>>> featureFrame;
     for (size_t i = 0; i < ids.size(); i++)
     {
-        int feature_id = ids[i];
+        if(!std::isnan(cur_un_pts[i].x) && !std::isnan(cur_un_pts[i].y))
+      {
+	    int feature_id = ids[i];
         double x, y ,z;
         x = cur_un_pts[i].x;
         y = cur_un_pts[i].y;
@@ -276,13 +278,16 @@ map<int, vector<pair<int, Eigen::Matrix<double, 7, 1>>>> FeatureTracker::trackIm
         Eigen::Matrix<double, 7, 1> xyz_uv_velocity;
         xyz_uv_velocity << x, y, z, p_u, p_v, velocity_x, velocity_y;
         featureFrame[feature_id].emplace_back(camera_id,  xyz_uv_velocity);
+      }
     }
 
     if (!_img1.empty() && stereo_cam)
     {
         for (size_t i = 0; i < ids_right.size(); i++)
         {
-            int feature_id = ids_right[i];
+           if(!std::isnan(cur_un_right_pts[i].x) && !std::isnan(cur_un_right_pts[i].y))
+          { 
+	    int feature_id = ids_right[i];
             double x, y ,z;
             x = cur_un_right_pts[i].x;
             y = cur_un_right_pts[i].y;
@@ -298,7 +303,8 @@ map<int, vector<pair<int, Eigen::Matrix<double, 7, 1>>>> FeatureTracker::trackIm
             Eigen::Matrix<double, 7, 1> xyz_uv_velocity;
             xyz_uv_velocity << x, y, z, p_u, p_v, velocity_x, velocity_y;
             featureFrame[feature_id].emplace_back(camera_id,  xyz_uv_velocity);
-        }
+	  }
+	  }
     }
 
     //printf("feature track whole time %f\n", t_r.toc());
