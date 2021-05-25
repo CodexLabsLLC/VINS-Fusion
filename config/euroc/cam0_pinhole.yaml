@@ -10,13 +10,7 @@ distortion_parameters:
    p1: 0
    p2: 0
 projection_parameters:
-<<<<<<< HEAD
-   fx: 376
-   fy: 376
-   cx: 376
-=======
    fx: 320
    fy: 320
    cx: 320
->>>>>>> adding-vins-config-file
    cy: 240
