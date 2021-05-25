@@ -5,14 +5,14 @@
 imu: 0         
 num_of_cam: 2  
 
-imu_topic: "/imu0"
-image0_topic: "/airsim_node/drone_1/front_left_custom/Scene"
-image1_topic: "/airsim_node/drone_1/front_right_custom/Scene"
-output_path: "/home/out"
+imu_topic: "/airsim_node/PX4/imu/Imu"
+image0_topic: "/airsim_node/PX4/front_left_custom/Scene"
+image1_topic: "/airsim_node/PX4/front_right_custom/Scene"
+output_path: "/VINS/odom"
 
 cam0_calib: "cam0_pinhole.yaml"
 cam1_calib: "cam1_pinhole.yaml"
-image_width: 752
+image_width: 640
 image_height: 480
    
 
@@ -24,20 +24,53 @@ body_T_cam0: !!opencv-matrix
    rows: 4
    cols: 4
    dt: d
-   data: [1.0, 0.0, 0.0, .5,
-           0.0, 1.0, 0.0,  -0.06,
-           0.0, 0.0, 1.0, 0.1,
-           0, 0, 0, 1]
+   #original matrix
+   #data: [1.0, 0.0, 0.0, .5,
+        #    0.0, 1.0, 0.0,  -0.06,
+        #    0.0, 0.0, 1.0, 0.1,
+        #    0, 0, 0, 1]
+  #y rotation by -90 degrees
+#    data: [0.0, 0.0, -1.0, 0.5,
+#            0.0, 1.0, 0.0, -0.06,
+#            1.0, 0.0, 0.0, 0.1,
+#            0.0, 0.0, 0.0, 1]
+  # z rotation by 90 degrees
+#    data: [0.0, 0.0, -1.0, 0.5,
+#            1.0, 0.0, 0.0, -0.06,
+#            0.0, -1.0, 0.0, 0.1,
+#            0.0, 0.0, 0.0, 1.0]
+  # y axis rotation by 90 degrees
+   data: [1.0, 0.0, 0.0, 0.5,
+              0.0, 0.0, 1.0, -0.06,
+              0.0, -1.0, 0.0, 0.1,
+              0.0, 0.0, 0.0, 1.0] 
+ 
+
 
 body_T_cam1: !!opencv-matrix
    rows: 4
    cols: 4
    dt: d
-   data: [1.0, 0.0, 0.0, .5,
-           0.0, 1.0, 0.0,  0.06,
-           0.0, 0.0, 1.0, 0.1,
-           0, 0, 0, 1]
-
+#    data: [1.0, 0.0, 0.0, .5,
+#            0.0, 1.0, 0.0,  0.06,
+#            0.0, 0.0, 1.0, 0.1,
+#            0, 0, 0, 1]
+#    data: [0.0, 0.0, -1.0, 0.5,
+#            0.0, 1.0, 0.0, -0.06,
+#             1.0, 0.0, 0.0, 0.1,
+#             0.0,0.0,0.0,1.0]
+#    data: [0.0, 0.0, -1.0, 0.5,
+#            1.0, 0.0, 0.0, -0.06,
+#            0.0, -1.0, 0.0, 0.1,
+#            0.0, 0.0, 0.0, 1.0]
+#    data: [0.0, -1.0, 0.0, 0.5,
+#            1.0, 0.0, 0.0, -0.06,
+#            0.0, 0.0, 1.0, 0.1,
+#            0.0, 0.0, 0.0, 1.0]
+   data: [1.0, 0.0, 0.0, 0.5,
+              0.0, 0.0, 1.0, -0.06,
+              0.0, -1.0, 0.0, 0.1,
+              0.0, 0.0, 0.0, 1.0]
 #Multiple thread support
 multiple_thread: 1
 
