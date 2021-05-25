@@ -4,10 +4,11 @@
 imu: 1
 num_of_cam: 2  # 1 or 2
 
-imu_topic: "/data_generator/imu"
-image0_topic: "/cam0/image_raw"
-image1_topic: "/cam1/image_raw"
-output_path: "/home/tony-ws1/output/"
+#modify the simulation_config.yaml and pass in the airsim imu topics
+imu_topic: "/imu0"
+image0_topic: "/airsim_node/PX4/front_left_custom/Scene"
+image1_topic: "/airsim_node/PX4/front_right_custom/Scene"
+output_path: "/home/out"
 
 cam0_calib: "cam0_mei.yaml"
 cam1_calib: "cam1_mei.yaml"
@@ -22,10 +23,10 @@ estimate_extrinsic: 0   # 0  Have an accurate extrinsic parameters. We will trus
 
 #cam0 to body
 body_T_cam0: !!opencv-matrix
-   rows: 4
-   cols: 4
-   dt: d
-   data: [0, 0, -1, -0.02,
+  rows: 4
+  cols: 4
+  dt: d
+  data: [0, 0, -1, -0.02,
           -1, 0, 0, 0,
           0, 1, 0, 0.02,
           0, 0, 0, 1]
