@@ -28,8 +28,8 @@ body_T_cam0: !!opencv-matrix
   cols: 4
   dt: d
   data: [0, 0, 1, 0.35,
-        1, 0, 0, 0.0,
-        0, 1, 0, 0.0, 
+        -1, 0, 0, 0.0,
+        0, -1, 0, 0.0, 
         0., 0., 0., 1 ]
 
 body_T_cam1: !!opencv-matrix
