@@ -27,7 +27,7 @@ body_T_cam0: !!opencv-matrix
   rows: 4
   cols: 4
   dt: d
-  data: [0, 0, 1, 0.0,
+  data: [0, 0, 1, 0.35,
         1, 0, 0, 0.0,
         0, 1, 0, 0.0, 
         0., 0., 0., 1 ]
@@ -70,9 +70,9 @@ gyr_w: 0.00007878       # gyroscope bias random work noise standard deviation.  
 g_norm: 9.81007       # gravity magnitude
 
 #unsynchronization parameters
-estimate_td: 1                      # online estimate time offset between camera and imu
+estimate_td: 0                      # online estimate time offset between camera and imu
 # td: -0.0736        #-0.0736 when use DJI IMU                       # initial value of time offset. unit: s. readed image clock + td = real image clock (IMU clock)#
-td: 0.0
+td: 0.015
 #loop closure parameters
 load_previous_pose_graph: 0        # load and reuse previous pose graph; load from 'pose_graph_save_path'
 pose_graph_save_path: "/home/codex_labs/output/pose_graph/" # save and load path
