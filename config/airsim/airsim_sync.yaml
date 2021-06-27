@@ -5,7 +5,7 @@
 imu: 1
 num_of_cam: 1
 
-imu_topic: "/airsim_node/PX$/imu/imu"
+imu_topic: "/airsim_node/PX4/imu/imu"
 # imu_topic: "/dji_sdk_1/dji_sdk/imu"
 image0_topic: "/airsim_node/PX4/front_center/Scene"
 image1_topic: "/airsim_node/PX4/front_right_custom/Scene"
