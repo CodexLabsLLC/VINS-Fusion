@@ -279,7 +279,8 @@ void Estimator::processMeasurements()
             feature = featureBuf.front();
             curTime = feature.first + td;
             while(1)
-            {
+            {   
+                break;
                 if ((!USE_IMU  || IMUAvailable(feature.first + td)))
                     break;
                 else
